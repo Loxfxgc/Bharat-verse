@@ -1,0 +1,9 @@
+canonical_field,source_system,source_field,fusion_rule,confidence
+course_id,LMS,course_code,course identifier normalized to canonical course_id,high
+student_count,LMS,enrolled_students,mapped to Universal Resource Model demand field,high
+room_id,ERP,room_no,normalized room identifier,high
+capacity,ERP,max_capacity,validated > 0,high
+faculty_id,HR,employee_code,mapped to canonical faculty_id,high
+equipment_id,Asset_Register,asset_tag,normalized asset identifier,high
+occupancy_count,IoT,occupancy_count,time-aligned to room resource state,medium
+power_kw,IoT,power_kw,time-aligned sensor metric,medium

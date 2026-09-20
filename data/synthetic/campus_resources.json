@@ -1,0 +1,855 @@
+{
+  "buildings": [
+    {
+      "building_id": "BLD_A",
+      "name": "Aryabhata Academic Block",
+      "floors": 4,
+      "location": "North Campus"
+    },
+    {
+      "building_id": "BLD_B",
+      "name": "Bhabha Science & Tech Block",
+      "floors": 5,
+      "location": "East Campus"
+    },
+    {
+      "building_id": "BLD_C",
+      "name": "Ramanujan Computing Complex",
+      "floors": 3,
+      "location": "West Campus"
+    }
+  ],
+  "rooms": [
+    {
+      "resource_id": "ROOM_R101",
+      "name": "Room R101",
+      "type": "room",
+      "capacity": 60,
+      "building_id": "BLD_A",
+      "floor": 1,
+      "status": "occupied",
+      "capabilities": [
+        "projector"
+      ],
+      "cost_per_hour": 50,
+      "location": "Block A - Floor 1"
+    },
+    {
+      "resource_id": "ROOM_R102",
+      "name": "Room R102",
+      "type": "room",
+      "capacity": 100,
+      "building_id": "BLD_A",
+      "floor": 1,
+      "status": "available",
+      "capabilities": [
+        "projector",
+        "computer",
+        "audio"
+      ],
+      "cost_per_hour": 75,
+      "location": "Block A - Floor 1"
+    },
+    {
+      "resource_id": "ROOM_R103",
+      "name": "Room R103",
+      "type": "room",
+      "capacity": 80,
+      "building_id": "BLD_A",
+      "floor": 1,
+      "status": "available",
+      "capabilities": [
+        "projector"
+      ],
+      "cost_per_hour": 60,
+      "location": "Block A - Floor 1"
+    },
+    {
+      "resource_id": "ROOM_R104",
+      "name": "Room R104",
+      "type": "room",
+      "capacity": 120,
+      "building_id": "BLD_A",
+      "floor": 1,
+      "status": "occupied",
+      "capabilities": [
+        "projector",
+        "computer",
+        "audio",
+        "smartboard"
+      ],
+      "cost_per_hour": 110,
+      "location": "Block A - Floor 1"
+    },
+    {
+      "resource_id": "ROOM_R201",
+      "name": "Room R201",
+      "type": "room",
+      "capacity": 70,
+      "building_id": "BLD_A",
+      "floor": 2,
+      "status": "available",
+      "capabilities": [
+        "projector"
+      ],
+      "cost_per_hour": 55,
+      "location": "Block A - Floor 2"
+    },
+    {
+      "resource_id": "ROOM_R202",
+      "name": "Room R202",
+      "type": "room",
+      "capacity": 90,
+      "building_id": "BLD_A",
+      "floor": 2,
+      "status": "maintenance",
+      "capabilities": [
+        "projector",
+        "computer"
+      ],
+      "cost_per_hour": 70,
+      "location": "Block A - Floor 2"
+    },
+    {
+      "resource_id": "ROOM_R203",
+      "name": "Room R203",
+      "type": "room",
+      "capacity": 60,
+      "building_id": "BLD_A",
+      "floor": 2,
+      "status": "available",
+      "capabilities": [
+        "projector"
+      ],
+      "cost_per_hour": 50,
+      "location": "Block A - Floor 2"
+    },
+    {
+      "resource_id": "ROOM_AUD1",
+      "name": "Dr. Kalam Auditorium",
+      "type": "auditorium",
+      "capacity": 300,
+      "building_id": "BLD_A",
+      "floor": 3,
+      "status": "available",
+      "capabilities": [
+        "projector",
+        "computer",
+        "audio",
+        "stage_lighting",
+        "broadcast"
+      ],
+      "cost_per_hour": 250,
+      "location": "Block A - Floor 3"
+    },
+    {
+      "resource_id": "ROOM_B101",
+      "name": "Hall B101",
+      "type": "room",
+      "capacity": 150,
+      "building_id": "BLD_B",
+      "floor": 1,
+      "status": "available",
+      "capabilities": [
+        "projector",
+        "audio",
+        "smartboard"
+      ],
+      "cost_per_hour": 120,
+      "location": "Block B - Floor 1"
+    },
+    {
+      "resource_id": "ROOM_B102",
+      "name": "Room B102",
+      "type": "room",
+      "capacity": 50,
+      "building_id": "BLD_B",
+      "floor": 1,
+      "status": "occupied",
+      "capabilities": [
+        "projector"
+      ],
+      "cost_per_hour": 45,
+      "location": "Block B - Floor 1"
+    },
+    {
+      "resource_id": "ROOM_B201",
+      "name": "Room B201",
+      "type": "room",
+      "capacity": 75,
+      "building_id": "BLD_B",
+      "floor": 2,
+      "status": "available",
+      "capabilities": [
+        "projector",
+        "computer"
+      ],
+      "cost_per_hour": 65,
+      "location": "Block B - Floor 2"
+    },
+    {
+      "resource_id": "ROOM_B202",
+      "name": "Room B202",
+      "type": "room",
+      "capacity": 85,
+      "building_id": "BLD_B",
+      "floor": 2,
+      "status": "reserved",
+      "capabilities": [
+        "projector"
+      ],
+      "cost_per_hour": 65,
+      "location": "Block B - Floor 2"
+    },
+    {
+      "resource_id": "ROOM_PHY_LAB",
+      "name": "Advanced Physics Lab",
+      "type": "laboratory",
+      "capacity": 40,
+      "building_id": "BLD_B",
+      "floor": 3,
+      "status": "available",
+      "capabilities": [
+        "lab_equipment",
+        "sensors",
+        "power_bench"
+      ],
+      "cost_per_hour": 90,
+      "location": "Block B - Floor 3"
+    },
+    {
+      "resource_id": "ROOM_CHEM_LAB",
+      "name": "Nanotech Chemistry Lab",
+      "type": "laboratory",
+      "capacity": 35,
+      "building_id": "BLD_B",
+      "floor": 4,
+      "status": "available",
+      "capabilities": [
+        "fume_hood",
+        "chemical_bench",
+        "sensors"
+      ],
+      "cost_per_hour": 100,
+      "location": "Block B - Floor 4"
+    },
+    {
+      "resource_id": "ROOM_C101",
+      "name": "Computing Lab Alpha",
+      "type": "laboratory",
+      "capacity": 60,
+      "building_id": "BLD_C",
+      "floor": 1,
+      "status": "occupied",
+      "capabilities": [
+        "computer",
+        "gpu_cluster",
+        "projector",
+        "high_speed_net"
+      ],
+      "cost_per_hour": 130,
+      "location": "Block C - Floor 1"
+    },
+    {
+      "resource_id": "ROOM_C102",
+      "name": "AI & Robotics Lab",
+      "type": "laboratory",
+      "capacity": 45,
+      "building_id": "BLD_C",
+      "floor": 1,
+      "status": "available",
+      "capabilities": [
+        "gpu_cluster",
+        "robotics_kit",
+        "projector",
+        "computer"
+      ],
+      "cost_per_hour": 150,
+      "location": "Block C - Floor 1"
+    },
+    {
+      "resource_id": "ROOM_C201",
+      "name": "Seminar Room C201",
+      "type": "seminar",
+      "capacity": 55,
+      "building_id": "BLD_C",
+      "floor": 2,
+      "status": "available",
+      "capabilities": [
+        "smartboard",
+        "video_conf",
+        "audio"
+      ],
+      "cost_per_hour": 80,
+      "location": "Block C - Floor 2"
+    },
+    {
+      "resource_id": "ROOM_C202",
+      "name": "IoT Innovation Lab",
+      "type": "laboratory",
+      "capacity": 40,
+      "building_id": "BLD_C",
+      "floor": 2,
+      "status": "available",
+      "capabilities": [
+        "iot_nodes",
+        "sensors",
+        "soldering_stations",
+        "computer"
+      ],
+      "cost_per_hour": 95,
+      "location": "Block C - Floor 2"
+    },
+    {
+      "resource_id": "ROOM_R301",
+      "name": "Lecture Room R301",
+      "type": "room",
+      "capacity": 50,
+      "building_id": "BLD_A",
+      "floor": 3,
+      "status": "occupied",
+      "capabilities": [
+        "projector"
+      ],
+      "cost_per_hour": 60,
+      "location": "Academic Wing - Level 3"
+    },
+    {
+      "resource_id": "ROOM_R302",
+      "name": "Lecture Room R302",
+      "type": "room",
+      "capacity": 65,
+      "building_id": "BLD_A",
+      "floor": 3,
+      "status": "available",
+      "capabilities": [
+        "projector",
+        "computer"
+      ],
+      "cost_per_hour": 79,
+      "location": "Academic Wing - Level 3"
+    },
+    {
+      "resource_id": "ROOM_R303",
+      "name": "Lecture Room R303",
+      "type": "room",
+      "capacity": 50,
+      "building_id": "BLD_B",
+      "floor": 3,
+      "status": "available",
+      "capabilities": [
+        "projector"
+      ],
+      "cost_per_hour": 46,
+      "location": "Academic Wing - Level 3"
+    },
+    {
+      "resource_id": "ROOM_R304",
+      "name": "Lecture Room R304",
+      "type": "room",
+      "capacity": 50,
+      "building_id": "BLD_A",
+      "floor": 3,
+      "status": "available",
+      "capabilities": [
+        "projector",
+        "computer"
+      ],
+      "cost_per_hour": 77,
+      "location": "Academic Wing - Level 3"
+    },
+    {
+      "resource_id": "ROOM_R305",
+      "name": "Lecture Room R305",
+      "type": "room",
+      "capacity": 110,
+      "building_id": "BLD_A",
+      "floor": 3,
+      "status": "available",
+      "capabilities": [
+        "projector"
+      ],
+      "cost_per_hour": 79,
+      "location": "Academic Wing - Level 3"
+    },
+    {
+      "resource_id": "ROOM_R306",
+      "name": "Lecture Room R306",
+      "type": "room",
+      "capacity": 100,
+      "building_id": "BLD_A",
+      "floor": 3,
+      "status": "maintenance",
+      "capabilities": [
+        "projector",
+        "computer"
+      ],
+      "cost_per_hour": 82,
+      "location": "Academic Wing - Level 3"
+    },
+    {
+      "resource_id": "ROOM_R307",
+      "name": "Lecture Room R307",
+      "type": "room",
+      "capacity": 80,
+      "building_id": "BLD_A",
+      "floor": 3,
+      "status": "available",
+      "capabilities": [
+        "projector"
+      ],
+      "cost_per_hour": 72,
+      "location": "Academic Wing - Level 3"
+    }
+  ],
+  "faculty": [
+    {
+      "faculty_id": "FAC_X",
+      "name": "Dr. X (Prof. A. Sengupta)",
+      "department": "Computer Science & AI",
+      "title": "Professor",
+      "email": "asengupta@campus.edu",
+      "expertise": [
+        "Machine Learning",
+        "Data Science"
+      ]
+    },
+    {
+      "faculty_id": "FAC_ROY",
+      "name": "Dr. Vikram Roy",
+      "department": "Computer Science",
+      "title": "Associate Professor",
+      "email": "vroy@campus.edu",
+      "expertise": [
+        "Algorithms",
+        "Distributed Systems"
+      ]
+    },
+    {
+      "faculty_id": "FAC_PRIYA",
+      "name": "Dr. Priya Patel",
+      "department": "Data Science",
+      "title": "Assistant Professor",
+      "email": "ppatel@campus.edu",
+      "expertise": [
+        "Data Analytics",
+        "Deep Learning"
+      ]
+    },
+    {
+      "faculty_id": "FAC_SHARMA",
+      "name": "Prof. Rajesh Sharma",
+      "department": "Electronics",
+      "title": "Professor",
+      "email": "rsharma@campus.edu",
+      "expertise": [
+        "IoT Systems",
+        "Embedded Sensors"
+      ]
+    },
+    {
+      "faculty_id": "FAC_MEERA",
+      "name": "Dr. Meera Iyer",
+      "department": "Mechanical Eng",
+      "title": "Associate Professor",
+      "email": "miyer@campus.edu",
+      "expertise": [
+        "Robotics",
+        "Automation"
+      ]
+    },
+    {
+      "faculty_id": "FAC_VERMA",
+      "name": "Dr. Amit Verma",
+      "department": "Physics",
+      "title": "Assistant Professor",
+      "email": "averma@campus.edu",
+      "expertise": [
+        "Quantum Mechanics",
+        "Optics"
+      ]
+    },
+    {
+      "faculty_id": "FAC_ANANYA",
+      "name": "Dr. Ananya Das",
+      "department": "Mathematics",
+      "title": "Associate Professor",
+      "email": "adas@campus.edu",
+      "expertise": [
+        "Optimization",
+        "Stochastics"
+      ]
+    },
+    {
+      "faculty_id": "FAC_KAPOOR",
+      "name": "Dr. Sunil Kapoor",
+      "department": "Management & Systems",
+      "title": "Professor",
+      "email": "skapoor@campus.edu",
+      "expertise": [
+        "Operations Research",
+        "Logistics"
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "course_id": "CRS_DS301",
+      "code": "DS301",
+      "name": "Data Science & Big Data Systems",
+      "enrolled_students": 85,
+      "faculty_id": "FAC_X",
+      "required_capabilities": [
+        "projector",
+        "computer"
+      ],
+      "current_room_id": "ROOM_R101",
+      "day": "Monday",
+      "time_slot": "09:00 - 11:00",
+      "priority": "high"
+    },
+    {
+      "course_id": "CRS_CS101",
+      "code": "CS101",
+      "name": "Data Structures & Algorithms",
+      "enrolled_students": 95,
+      "faculty_id": "FAC_ROY",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R104",
+      "day": "Monday",
+      "time_slot": "11:15 - 13:15",
+      "priority": "high"
+    },
+    {
+      "course_id": "CRS_AI401",
+      "code": "AI401",
+      "name": "Deep Learning & Neural Networks Lab",
+      "enrolled_students": 42,
+      "faculty_id": "FAC_PRIYA",
+      "required_capabilities": [
+        "computer",
+        "gpu_cluster"
+      ],
+      "current_room_id": "ROOM_C101",
+      "day": "Tuesday",
+      "time_slot": "14:00 - 16:00",
+      "priority": "medium"
+    },
+    {
+      "course_id": "CRS_IOT201",
+      "code": "IOT201",
+      "name": "IoT Architectures & Edge Intelligence",
+      "enrolled_students": 38,
+      "faculty_id": "FAC_SHARMA",
+      "required_capabilities": [
+        "sensors",
+        "iot_nodes"
+      ],
+      "current_room_id": "ROOM_C202",
+      "day": "Wednesday",
+      "time_slot": "09:00 - 11:00",
+      "priority": "medium"
+    },
+    {
+      "course_id": "CRS_ROB302",
+      "code": "ROB302",
+      "name": "Autonomous Robotics Lab",
+      "enrolled_students": 32,
+      "faculty_id": "FAC_MEERA",
+      "required_capabilities": [
+        "robotics_kit",
+        "gpu_cluster"
+      ],
+      "current_room_id": "ROOM_C102",
+      "day": "Thursday",
+      "time_slot": "10:00 - 12:00",
+      "priority": "high"
+    },
+    {
+      "course_id": "CRS_OPT501",
+      "code": "OPT501",
+      "name": "Operations Research & Optimization",
+      "enrolled_students": 72,
+      "faculty_id": "FAC_ANANYA",
+      "required_capabilities": [
+        "projector",
+        "computer"
+      ],
+      "current_room_id": "ROOM_R103",
+      "day": "Friday",
+      "time_slot": "14:00 - 16:00",
+      "priority": "medium"
+    },
+    {
+      "course_id": "CRS_MGT405",
+      "code": "MGT405",
+      "name": "Enterprise Supply Chain Optimization",
+      "enrolled_students": 110,
+      "faculty_id": "FAC_KAPOOR",
+      "required_capabilities": [
+        "projector",
+        "audio"
+      ],
+      "current_room_id": "ROOM_B101",
+      "day": "Wednesday",
+      "time_slot": "11:15 - 13:15",
+      "priority": "medium"
+    },
+    {
+      "course_id": "CRS_GEN100",
+      "code": "GEN100",
+      "name": "Advanced Topic Course GEN100",
+      "enrolled_students": 78,
+      "faculty_id": "FAC_MEERA",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R201",
+      "day": "Tuesday",
+      "time_slot": "11:15 - 13:15",
+      "priority": "low"
+    },
+    {
+      "course_id": "CRS_GEN110",
+      "code": "GEN110",
+      "name": "Advanced Topic Course GEN110",
+      "enrolled_students": 46,
+      "faculty_id": "FAC_ANANYA",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R104",
+      "day": "Wednesday",
+      "time_slot": "11:15 - 13:15",
+      "priority": "high"
+    },
+    {
+      "course_id": "CRS_GEN120",
+      "code": "GEN120",
+      "name": "Advanced Topic Course GEN120",
+      "enrolled_students": 68,
+      "faculty_id": "FAC_X",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R306",
+      "day": "Thursday",
+      "time_slot": "14:00 - 16:00",
+      "priority": "low"
+    },
+    {
+      "course_id": "CRS_GEN130",
+      "code": "GEN130",
+      "name": "Advanced Topic Course GEN130",
+      "enrolled_students": 83,
+      "faculty_id": "FAC_ROY",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_C202",
+      "day": "Wednesday",
+      "time_slot": "14:00 - 16:00",
+      "priority": "high"
+    },
+    {
+      "course_id": "CRS_GEN140",
+      "code": "GEN140",
+      "name": "Advanced Topic Course GEN140",
+      "enrolled_students": 81,
+      "faculty_id": "FAC_SHARMA",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R305",
+      "day": "Monday",
+      "time_slot": "09:00 - 11:00",
+      "priority": "high"
+    },
+    {
+      "course_id": "CRS_GEN150",
+      "code": "GEN150",
+      "name": "Advanced Topic Course GEN150",
+      "enrolled_students": 64,
+      "faculty_id": "FAC_MEERA",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R103",
+      "day": "Tuesday",
+      "time_slot": "09:00 - 11:00",
+      "priority": "medium"
+    },
+    {
+      "course_id": "CRS_GEN160",
+      "code": "GEN160",
+      "name": "Advanced Topic Course GEN160",
+      "enrolled_students": 70,
+      "faculty_id": "FAC_KAPOOR",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R303",
+      "day": "Wednesday",
+      "time_slot": "09:00 - 11:00",
+      "priority": "medium"
+    },
+    {
+      "course_id": "CRS_GEN170",
+      "code": "GEN170",
+      "name": "Advanced Topic Course GEN170",
+      "enrolled_students": 80,
+      "faculty_id": "FAC_SHARMA",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R304",
+      "day": "Wednesday",
+      "time_slot": "14:00 - 16:00",
+      "priority": "high"
+    },
+    {
+      "course_id": "CRS_GEN180",
+      "code": "GEN180",
+      "name": "Advanced Topic Course GEN180",
+      "enrolled_students": 44,
+      "faculty_id": "FAC_PRIYA",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_C202",
+      "day": "Tuesday",
+      "time_slot": "09:00 - 11:00",
+      "priority": "medium"
+    },
+    {
+      "course_id": "CRS_GEN190",
+      "code": "GEN190",
+      "name": "Advanced Topic Course GEN190",
+      "enrolled_students": 83,
+      "faculty_id": "FAC_MEERA",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R303",
+      "day": "Friday",
+      "time_slot": "09:00 - 11:00",
+      "priority": "high"
+    },
+    {
+      "course_id": "CRS_GEN200",
+      "code": "GEN200",
+      "name": "Advanced Topic Course GEN200",
+      "enrolled_students": 76,
+      "faculty_id": "FAC_X",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_AUD1",
+      "day": "Monday",
+      "time_slot": "11:15 - 13:15",
+      "priority": "medium"
+    },
+    {
+      "course_id": "CRS_GEN210",
+      "code": "GEN210",
+      "name": "Advanced Topic Course GEN210",
+      "enrolled_students": 69,
+      "faculty_id": "FAC_ROY",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R203",
+      "day": "Friday",
+      "time_slot": "14:00 - 16:00",
+      "priority": "medium"
+    },
+    {
+      "course_id": "CRS_GEN220",
+      "code": "GEN220",
+      "name": "Advanced Topic Course GEN220",
+      "enrolled_students": 62,
+      "faculty_id": "FAC_KAPOOR",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_PHY_LAB",
+      "day": "Thursday",
+      "time_slot": "09:00 - 11:00",
+      "priority": "medium"
+    },
+    {
+      "course_id": "CRS_GEN230",
+      "code": "GEN230",
+      "name": "Advanced Topic Course GEN230",
+      "enrolled_students": 52,
+      "faculty_id": "FAC_SHARMA",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R306",
+      "day": "Friday",
+      "time_slot": "14:00 - 16:00",
+      "priority": "medium"
+    },
+    {
+      "course_id": "CRS_GEN240",
+      "code": "GEN240",
+      "name": "Advanced Topic Course GEN240",
+      "enrolled_students": 109,
+      "faculty_id": "FAC_ANANYA",
+      "required_capabilities": [
+        "projector"
+      ],
+      "current_room_id": "ROOM_R301",
+      "day": "Thursday",
+      "time_slot": "11:15 - 13:15",
+      "priority": "low"
+    }
+  ],
+  "equipment": [
+    {
+      "equipment_id": "EQP_PROJ_01",
+      "name": "4K Laser Projector Pro",
+      "type": "projector",
+      "status": "functional",
+      "room_id": "ROOM_R102"
+    },
+    {
+      "equipment_id": "EQP_PROJ_02",
+      "name": "Optoma Classroom Projector",
+      "type": "projector",
+      "status": "functional",
+      "room_id": "ROOM_R101"
+    },
+    {
+      "equipment_id": "EQP_GPU_01",
+      "name": "NVIDIA DGX A100 Workstation",
+      "type": "gpu_cluster",
+      "status": "functional",
+      "room_id": "ROOM_C101"
+    },
+    {
+      "equipment_id": "EQP_AUDIO_01",
+      "name": "JBL Conference Mic & Surround",
+      "type": "audio",
+      "status": "functional",
+      "room_id": "ROOM_R102"
+    },
+    {
+      "equipment_id": "EQP_ROBOT_01",
+      "name": "TurtleBot3 Mobile Manipulators (x6)",
+      "type": "robotics_kit",
+      "status": "functional",
+      "room_id": "ROOM_C102"
+    },
+    {
+      "equipment_id": "EQP_IOT_01",
+      "name": "ESP32 & LoRa Gateway Testbed",
+      "type": "iot_nodes",
+      "status": "functional",
+      "room_id": "ROOM_C202"
+    }
+  ]
+}

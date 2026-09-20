@@ -1,0 +1,9 @@
+dataset,purpose,grain,used_by
+universal_resource_model,Canonical entity layer after source fusion,All resource types,Optimization/Digital Twin
+fused_ml_room_occupancy,Time-series feature table for XGBoost + Isolation Forest,room/time,Prediction/Anomaly
+scenario_candidates,Candidate allocations with hard-constraint flags and objective features,course/room/scenario,Simulation/OR-Tools
+recommendations,Explainable optimizer outputs,recommendation,Decision/Approval
+resource_events,Operational state transitions,resource/time,Digital Twin
+outcomes_feedback,Prediction-vs-actual and execution outcomes,recommendation,Feedback/Retraining
+fusion_lineage,Source-to-canonical mapping and quality metadata,field,Data Fusion
+neo4j_relationships,Graph edges for resource relationships,from/to,Resource Graph

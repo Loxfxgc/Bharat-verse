@@ -1,0 +1,896 @@
+{
+  "nodes": [
+    {
+      "id": "BLD_A",
+      "label": "Building",
+      "name": "Aryabhata Academic Block"
+    },
+    {
+      "id": "BLD_B",
+      "label": "Building",
+      "name": "Bhabha Science & Tech Block"
+    },
+    {
+      "id": "BLD_C",
+      "label": "Building",
+      "name": "Ramanujan Computing Complex"
+    },
+    {
+      "id": "ROOM_R101",
+      "label": "Room",
+      "name": "Room R101",
+      "capacity": 60
+    },
+    {
+      "id": "ROOM_R102",
+      "label": "Room",
+      "name": "Room R102",
+      "capacity": 100
+    },
+    {
+      "id": "ROOM_R103",
+      "label": "Room",
+      "name": "Room R103",
+      "capacity": 80
+    },
+    {
+      "id": "ROOM_R104",
+      "label": "Room",
+      "name": "Room R104",
+      "capacity": 120
+    },
+    {
+      "id": "ROOM_R201",
+      "label": "Room",
+      "name": "Room R201",
+      "capacity": 70
+    },
+    {
+      "id": "ROOM_R202",
+      "label": "Room",
+      "name": "Room R202",
+      "capacity": 90
+    },
+    {
+      "id": "ROOM_R203",
+      "label": "Room",
+      "name": "Room R203",
+      "capacity": 60
+    },
+    {
+      "id": "ROOM_AUD1",
+      "label": "Room",
+      "name": "Dr. Kalam Auditorium",
+      "capacity": 300
+    },
+    {
+      "id": "ROOM_B101",
+      "label": "Room",
+      "name": "Hall B101",
+      "capacity": 150
+    },
+    {
+      "id": "ROOM_B102",
+      "label": "Room",
+      "name": "Room B102",
+      "capacity": 50
+    },
+    {
+      "id": "ROOM_B201",
+      "label": "Room",
+      "name": "Room B201",
+      "capacity": 75
+    },
+    {
+      "id": "ROOM_B202",
+      "label": "Room",
+      "name": "Room B202",
+      "capacity": 85
+    },
+    {
+      "id": "ROOM_PHY_LAB",
+      "label": "Room",
+      "name": "Advanced Physics Lab",
+      "capacity": 40
+    },
+    {
+      "id": "ROOM_CHEM_LAB",
+      "label": "Room",
+      "name": "Nanotech Chemistry Lab",
+      "capacity": 35
+    },
+    {
+      "id": "ROOM_C101",
+      "label": "Room",
+      "name": "Computing Lab Alpha",
+      "capacity": 60
+    },
+    {
+      "id": "ROOM_C102",
+      "label": "Room",
+      "name": "AI & Robotics Lab",
+      "capacity": 45
+    },
+    {
+      "id": "ROOM_C201",
+      "label": "Room",
+      "name": "Seminar Room C201",
+      "capacity": 55
+    },
+    {
+      "id": "ROOM_C202",
+      "label": "Room",
+      "name": "IoT Innovation Lab",
+      "capacity": 40
+    },
+    {
+      "id": "ROOM_R301",
+      "label": "Room",
+      "name": "Lecture Room R301",
+      "capacity": 50
+    },
+    {
+      "id": "ROOM_R302",
+      "label": "Room",
+      "name": "Lecture Room R302",
+      "capacity": 65
+    },
+    {
+      "id": "ROOM_R303",
+      "label": "Room",
+      "name": "Lecture Room R303",
+      "capacity": 50
+    },
+    {
+      "id": "ROOM_R304",
+      "label": "Room",
+      "name": "Lecture Room R304",
+      "capacity": 50
+    },
+    {
+      "id": "ROOM_R305",
+      "label": "Room",
+      "name": "Lecture Room R305",
+      "capacity": 110
+    },
+    {
+      "id": "ROOM_R306",
+      "label": "Room",
+      "name": "Lecture Room R306",
+      "capacity": 100
+    },
+    {
+      "id": "ROOM_R307",
+      "label": "Room",
+      "name": "Lecture Room R307",
+      "capacity": 80
+    },
+    {
+      "id": "FAC_X",
+      "label": "Faculty",
+      "name": "Dr. X (Prof. A. Sengupta)",
+      "dept": "Computer Science & AI"
+    },
+    {
+      "id": "FAC_ROY",
+      "label": "Faculty",
+      "name": "Dr. Vikram Roy",
+      "dept": "Computer Science"
+    },
+    {
+      "id": "FAC_PRIYA",
+      "label": "Faculty",
+      "name": "Dr. Priya Patel",
+      "dept": "Data Science"
+    },
+    {
+      "id": "FAC_SHARMA",
+      "label": "Faculty",
+      "name": "Prof. Rajesh Sharma",
+      "dept": "Electronics"
+    },
+    {
+      "id": "FAC_MEERA",
+      "label": "Faculty",
+      "name": "Dr. Meera Iyer",
+      "dept": "Mechanical Eng"
+    },
+    {
+      "id": "FAC_VERMA",
+      "label": "Faculty",
+      "name": "Dr. Amit Verma",
+      "dept": "Physics"
+    },
+    {
+      "id": "FAC_ANANYA",
+      "label": "Faculty",
+      "name": "Dr. Ananya Das",
+      "dept": "Mathematics"
+    },
+    {
+      "id": "FAC_KAPOOR",
+      "label": "Faculty",
+      "name": "Dr. Sunil Kapoor",
+      "dept": "Management & Systems"
+    },
+    {
+      "id": "CRS_DS301",
+      "label": "Course",
+      "name": "Data Science & Big Data Systems",
+      "enrolled": 85
+    },
+    {
+      "id": "CRS_CS101",
+      "label": "Course",
+      "name": "Data Structures & Algorithms",
+      "enrolled": 95
+    },
+    {
+      "id": "CRS_AI401",
+      "label": "Course",
+      "name": "Deep Learning & Neural Networks Lab",
+      "enrolled": 42
+    },
+    {
+      "id": "CRS_IOT201",
+      "label": "Course",
+      "name": "IoT Architectures & Edge Intelligence",
+      "enrolled": 38
+    },
+    {
+      "id": "CRS_ROB302",
+      "label": "Course",
+      "name": "Autonomous Robotics Lab",
+      "enrolled": 32
+    },
+    {
+      "id": "CRS_OPT501",
+      "label": "Course",
+      "name": "Operations Research & Optimization",
+      "enrolled": 72
+    },
+    {
+      "id": "CRS_MGT405",
+      "label": "Course",
+      "name": "Enterprise Supply Chain Optimization",
+      "enrolled": 110
+    },
+    {
+      "id": "CRS_GEN100",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN100",
+      "enrolled": 78
+    },
+    {
+      "id": "CRS_GEN110",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN110",
+      "enrolled": 46
+    },
+    {
+      "id": "CRS_GEN120",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN120",
+      "enrolled": 68
+    },
+    {
+      "id": "CRS_GEN130",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN130",
+      "enrolled": 83
+    },
+    {
+      "id": "CRS_GEN140",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN140",
+      "enrolled": 81
+    },
+    {
+      "id": "CRS_GEN150",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN150",
+      "enrolled": 64
+    },
+    {
+      "id": "CRS_GEN160",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN160",
+      "enrolled": 70
+    },
+    {
+      "id": "CRS_GEN170",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN170",
+      "enrolled": 80
+    },
+    {
+      "id": "CRS_GEN180",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN180",
+      "enrolled": 44
+    },
+    {
+      "id": "CRS_GEN190",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN190",
+      "enrolled": 83
+    },
+    {
+      "id": "CRS_GEN200",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN200",
+      "enrolled": 76
+    },
+    {
+      "id": "CRS_GEN210",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN210",
+      "enrolled": 69
+    },
+    {
+      "id": "CRS_GEN220",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN220",
+      "enrolled": 62
+    },
+    {
+      "id": "CRS_GEN230",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN230",
+      "enrolled": 52
+    },
+    {
+      "id": "CRS_GEN240",
+      "label": "Course",
+      "name": "Advanced Topic Course GEN240",
+      "enrolled": 109
+    },
+    {
+      "id": "EQP_PROJ_01",
+      "label": "Equipment",
+      "name": "4K Laser Projector Pro"
+    },
+    {
+      "id": "EQP_PROJ_02",
+      "label": "Equipment",
+      "name": "Optoma Classroom Projector"
+    },
+    {
+      "id": "EQP_GPU_01",
+      "label": "Equipment",
+      "name": "NVIDIA DGX A100 Workstation"
+    },
+    {
+      "id": "EQP_AUDIO_01",
+      "label": "Equipment",
+      "name": "JBL Conference Mic & Surround"
+    },
+    {
+      "id": "EQP_ROBOT_01",
+      "label": "Equipment",
+      "name": "TurtleBot3 Mobile Manipulators (x6)"
+    },
+    {
+      "id": "EQP_IOT_01",
+      "label": "Equipment",
+      "name": "ESP32 & LoRa Gateway Testbed"
+    }
+  ],
+  "edges": [
+    {
+      "source": "ROOM_R101",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R102",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R103",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R104",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R201",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R202",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R203",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_AUD1",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_B101",
+      "target": "BLD_B",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_B102",
+      "target": "BLD_B",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_B201",
+      "target": "BLD_B",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_B202",
+      "target": "BLD_B",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_PHY_LAB",
+      "target": "BLD_B",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_CHEM_LAB",
+      "target": "BLD_B",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_C101",
+      "target": "BLD_C",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_C102",
+      "target": "BLD_C",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_C201",
+      "target": "BLD_C",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_C202",
+      "target": "BLD_C",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R301",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R302",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R303",
+      "target": "BLD_B",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R304",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R305",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R306",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "ROOM_R307",
+      "target": "BLD_A",
+      "relation": "LOCATED_IN"
+    },
+    {
+      "source": "CRS_DS301",
+      "target": "FAC_X",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_DS301",
+      "target": "ROOM_R101",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_DS301",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_DS301",
+      "target": "computer",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_CS101",
+      "target": "FAC_ROY",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_CS101",
+      "target": "ROOM_R104",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_CS101",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_AI401",
+      "target": "FAC_PRIYA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_AI401",
+      "target": "ROOM_C101",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_AI401",
+      "target": "computer",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_AI401",
+      "target": "gpu_cluster",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_IOT201",
+      "target": "FAC_SHARMA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_IOT201",
+      "target": "ROOM_C202",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_IOT201",
+      "target": "sensors",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_IOT201",
+      "target": "iot_nodes",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_ROB302",
+      "target": "FAC_MEERA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_ROB302",
+      "target": "ROOM_C102",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_ROB302",
+      "target": "robotics_kit",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_ROB302",
+      "target": "gpu_cluster",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_OPT501",
+      "target": "FAC_ANANYA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_OPT501",
+      "target": "ROOM_R103",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_OPT501",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_OPT501",
+      "target": "computer",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_MGT405",
+      "target": "FAC_KAPOOR",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_MGT405",
+      "target": "ROOM_B101",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_MGT405",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_MGT405",
+      "target": "audio",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN100",
+      "target": "FAC_MEERA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN100",
+      "target": "ROOM_R201",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN100",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN110",
+      "target": "FAC_ANANYA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN110",
+      "target": "ROOM_R104",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN110",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN120",
+      "target": "FAC_X",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN120",
+      "target": "ROOM_R306",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN120",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN130",
+      "target": "FAC_ROY",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN130",
+      "target": "ROOM_C202",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN130",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN140",
+      "target": "FAC_SHARMA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN140",
+      "target": "ROOM_R305",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN140",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN150",
+      "target": "FAC_MEERA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN150",
+      "target": "ROOM_R103",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN150",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN160",
+      "target": "FAC_KAPOOR",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN160",
+      "target": "ROOM_R303",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN160",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN170",
+      "target": "FAC_SHARMA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN170",
+      "target": "ROOM_R304",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN170",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN180",
+      "target": "FAC_PRIYA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN180",
+      "target": "ROOM_C202",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN180",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN190",
+      "target": "FAC_MEERA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN190",
+      "target": "ROOM_R303",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN190",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN200",
+      "target": "FAC_X",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN200",
+      "target": "ROOM_AUD1",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN200",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN210",
+      "target": "FAC_ROY",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN210",
+      "target": "ROOM_R203",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN210",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN220",
+      "target": "FAC_KAPOOR",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN220",
+      "target": "ROOM_PHY_LAB",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN220",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN230",
+      "target": "FAC_SHARMA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN230",
+      "target": "ROOM_R306",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN230",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "CRS_GEN240",
+      "target": "FAC_ANANYA",
+      "relation": "TAUGHT_BY"
+    },
+    {
+      "source": "CRS_GEN240",
+      "target": "ROOM_R301",
+      "relation": "SCHEDULED_IN"
+    },
+    {
+      "source": "CRS_GEN240",
+      "target": "projector",
+      "relation": "REQUIRES_CAPABILITY"
+    },
+    {
+      "source": "EQP_PROJ_01",
+      "target": "ROOM_R102",
+      "relation": "INSTALLED_IN"
+    },
+    {
+      "source": "EQP_PROJ_02",
+      "target": "ROOM_R101",
+      "relation": "INSTALLED_IN"
+    },
+    {
+      "source": "EQP_GPU_01",
+      "target": "ROOM_C101",
+      "relation": "INSTALLED_IN"
+    },
+    {
+      "source": "EQP_AUDIO_01",
+      "target": "ROOM_R102",
+      "relation": "INSTALLED_IN"
+    },
+    {
+      "source": "EQP_ROBOT_01",
+      "target": "ROOM_C102",
+      "relation": "INSTALLED_IN"
+    },
+    {
+      "source": "EQP_IOT_01",
+      "target": "ROOM_C202",
+      "relation": "INSTALLED_IN"
+    }
+  ]
+}

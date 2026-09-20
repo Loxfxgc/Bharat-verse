@@ -1,0 +1,43 @@
+{
+  "model_name": "BharatVerse Campus Resource Intelligence ML",
+  "trained_at": "2026-09-20T18:38:06.706032",
+  "frameworks": {
+    "xgboost": "3.2.0",
+    "scikit_learn": "1.9.1"
+  },
+  "target": "actual_occupancy",
+  "metrics": {
+    "mae": 6.233,
+    "rmse": 15.663,
+    "r2_score": 0.8625,
+    "accuracy_pct": 86.25
+  },
+  "feature_cols": [
+    "day_of_week",
+    "hour",
+    "is_weekend",
+    "exam_period",
+    "room_capacity",
+    "equipment_count",
+    "cost_per_hour",
+    "hist_avg_occupancy"
+  ],
+  "feature_importances": {
+    "is_weekend": 0.3805929720401764,
+    "hist_avg_occupancy": 0.3597271740436554,
+    "day_of_week": 0.11528579890727997,
+    "room_capacity": 0.07563941180706024,
+    "hour": 0.04170481488108635,
+    "equipment_count": 0.01743745617568493,
+    "exam_period": 0.008001971989870071,
+    "cost_per_hour": 0.0016103428788483143
+  },
+  "anomaly_features": [
+    "occupancy_ratio",
+    "hour",
+    "is_weekend",
+    "cost_per_hour"
+  ],
+  "anomaly_contamination": 0.03,
+  "training_samples": 28560
+}

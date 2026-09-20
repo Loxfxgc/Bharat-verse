@@ -1,0 +1,9 @@
+recommendation_id,course_id,from_room_id,recommended_room_id,reason_capacity,reason_equipment,reason_schedule,expected_utilization_change,expected_cost_change_pct,confidence,risk_level,status
+REC_0001,C001,R001,R015,True,True,True,0.219,1.85,0.857,low,pending_approval
+REC_0002,C002,R001,R002,True,True,True,0.081,-6.76,0.925,medium,pending_approval
+REC_0003,C003,R001,R004,True,True,True,0.219,4.27,0.864,low,pending_approval
+REC_0004,C004,R001,R025,True,True,True,0.167,3.9,0.902,medium,pending_approval
+REC_0005,C005,R001,R014,True,True,True,0.145,4.42,0.965,low,pending_approval
+REC_0006,C006,R001,R018,True,True,True,0.206,-10.05,0.892,low,pending_approval
+REC_0007,C007,R001,R009,True,True,True,0.051,1.88,0.827,medium,pending_approval
+REC_0009,C009,R001,R009,True,True,True,0.172,-10.6,0.911,low,pending_approval

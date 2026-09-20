@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BharatVerse - Autonomous Resource Intelligence & Orchestration Platform. Sense, Predict, Simulate, Optimize, Explain, Act, and Learn.">
+  <title>🇮🇳 BharatVerse — Autonomous Resource Intelligence & Orchestration</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand-section">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <h1>BharatVerse</h1>
+          <span>Phase 4 Platform</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <span class="nav-label">Core Intelligence Loop</span>
+        <a class="nav-item active" id="nav-overview" onclick="switchView('overview')">
+          <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Executive Overview
+        </a>
+        <a class="nav-item" id="nav-digital-twin" onclick="switchView('digital-twin')">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+          Digital Twin State
+        </a>
+        <a class="nav-item" id="nav-graph" onclick="switchView('graph')">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          Resource Graph
+        </a>
+        <a class="nav-item" id="nav-forecast" onclick="switchView('forecast')">
+          <svg class="icon" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          AI Demand Forecast
+        </a>
+        <a class="nav-item" id="nav-simulation" onclick="switchView('simulation')">
+          <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          What-If Simulation Lab
+        </a>
+        <a class="nav-item" id="nav-optimization" onclick="switchView('optimization')">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          OR-Tools Optimizer
+        </a>
+
+        <span class="nav-label">Governance & Learning</span>
+        <a class="nav-item" id="nav-approvals" onclick="switchView('approvals')">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Approvals & Audit
+          <span class="badge" id="sidebar-pending-badge">1</span>
+        </a>
+        <a class="nav-item" id="nav-feedback" onclick="switchView('feedback')">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+          Feedback Loop
+        </a>
+        <a class="nav-item" id="nav-training" onclick="switchView('training')">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          Model Training Center
+        </a>
+      </nav>
+
+      <div class="nav-footer">
+        <div class="loop-pill">
+          <div class="status-dot"></div>
+          <div class="loop-text">
+            <p>Closed-Loop Engine</p>
+            <span>Sense ➔ Learn (Active)</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Area -->
+    <main class="main-wrapper">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="page-title">
+          <h2 id="current-view-title">Autonomous Resource Intelligence Overview</h2>
+          <p id="current-view-subtitle">Smart Campus Orchestration & Decision Intelligence (SIH 26202)</p>
+        </div>
+        <div class="header-actions">
+          <div class="search-bar">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="global-search" placeholder="Search rooms, courses..." oninput="handleSearch(this.value)">
+          </div>
+          <button class="btn-primary" id="btn-run-solver-quick" onclick="runFlagshipOptimization()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Solve Allocation
+          </button>
+        </div>
+      </header>
+
+      <!-- Dynamic Content Area -->
+      <div class="content-area">
+
+        <!-- 1. OVERVIEW VIEW -->
+        <section id="view-overview" class="view-panel active">
+          <!-- KPI Summary Grid -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-icon blue">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+              </div>
+              <div class="kpi-details">
+                <h3 id="kpi-total-res">25</h3>
+                <p>Campus Resources</p>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon green">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <div class="kpi-details">
+                <h3 id="kpi-available-res">18</h3>
+                <p>Available Now</p>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon purple">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+              </div>
+              <div class="kpi-details">
+                <h3 id="kpi-utilization">64.5%</h3>
+                <p>Avg Utilization</p>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon rose">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              </div>
+              <div class="kpi-details">
+                <h3 id="kpi-active-alerts">3</h3>
+                <p>Active Anomalies</p>
+              </div>
+            </div>
+
+            <div class="kpi-card">
+              <div class="kpi-icon amber">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              </div>
+              <div class="kpi-details">
+                <h3 id="kpi-pending-decisions">1</h3>
+                <p>Pending Approvals</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- THE WOW MOMENT: Decision Intelligence Banner -->
+          <div class="flagship-banner" id="wow-moment-card">
+            <div class="banner-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              The Wow Moment • Autonomous Decision Recommendation
+            </div>
+            <div class="banner-grid">
+              <div class="banner-left">
+                <h3 id="rec-title">Course DS301 Capacity Violation Detected</h3>
+                <p id="rec-problem-desc">Enrolled 85 students scheduled in Room R101 (Max capacity: 60). Constraint violation detected. OR-Tools solver identified optimal feasible reallocation to Room R102.</p>
+                <div class="recommendation-flow">
+                  <div class="room-pill">
+                    <span>Current Violation</span>
+                    <strong id="rec-from-room">Room R101 (Cap: 60)</strong>
+                  </div>
+                  <div class="arrow-divider">➔</div>
+                  <div class="room-pill">
+                    <span>OR-Tools Recommendation</span>
+                    <strong id="rec-to-room" style="color: var(--accent-cyan);">Room R102 (Cap: 100)</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="banner-right">
+                <div class="impact-row">
+                  <div class="impact-item">
+                    <span>Expected Impact</span>
+                    <strong class="green">+18% Utilization</strong>
+                  </div>
+                  <div class="impact-item">
+                    <span>Cost Delta</span>
+                    <strong class="green">-5% Cost / Student</strong>
+                  </div>
+                  <div class="impact-item">
+                    <span>AI Confidence</span>
+                    <strong class="cyan">91% (XGBoost)</strong>
+                  </div>
+                </div>
+
+                <div class="banner-actions" id="rec-actions-container">
+                  <button class="btn-approve" id="btn-approve-rec" onclick="approveFlagshipRecommendation()">
+                    ✓ Approve & Execute
+                  </button>
+                  <button class="btn-reject" id="btn-reject-rec" onclick="rejectFlagshipRecommendation()">
+                    ✕ Reject
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Digital Twin Grid -->
+          <div class="glass-card" style="margin-bottom: 28px;">
+            <div class="card-title">
+              <span>Campus Digital Twin State (Live Telemetry)</span>
+              <button class="btn-primary" style="padding: 4px 12px; font-size: 11px;" onclick="switchView('digital-twin')">View All Spaces</button>
+            </div>
+            <div class="resources-grid" id="overview-rooms-grid">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Anomalies Table -->
+          <div class="glass-card">
+            <div class="card-title">
+              <span>Isolation Forest Active Anomaly Detections</span>
+              <button class="btn-primary" style="padding: 4px 12px; font-size: 11px;" onclick="simulateNewAnomaly()">Trigger Live Sensor Event</button>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Resource</th>
+                  <th>Anomaly Type</th>
+                  <th>Observed Value</th>
+                  <th>Expected Baseline</th>
+                  <th>Severity</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="overview-anomalies-table">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 2. DIGITAL TWIN VIEW -->
+        <section id="view-digital-twin" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 24px;">
+            <div class="card-title">
+              <span>Universal Resource Model Catalog</span>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn-primary" style="padding: 6px 14px; font-size: 12px;" onclick="filterResources('all')">All</button>
+                <button class="btn-primary" style="padding: 6px 14px; font-size: 12px; background: rgba(0, 230, 118, 0.15); color: var(--accent-emerald);" onclick="filterResources('available')">Available</button>
+                <button class="btn-primary" style="padding: 6px 14px; font-size: 12px; background: rgba(0, 242, 254, 0.15); color: var(--accent-cyan);" onclick="filterResources('occupied')">Occupied</button>
+                <button class="btn-primary" style="padding: 6px 14px; font-size: 12px; background: rgba(255, 179, 0, 0.15); color: var(--accent-amber);" onclick="filterResources('maintenance')">Maintenance</button>
+              </div>
+            </div>
+            <div class="resources-grid" id="full-resources-grid">
+              <!-- Dynamically rendered -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. RESOURCE GRAPH VIEW -->
+        <section id="view-graph" class="view-panel">
+          <div class="glass-card">
+            <div class="card-title">
+              <span>Campus Multi-Hop Resource Relationship Graph</span>
+              <span style="font-size: 12px; color: var(--text-dim); font-family: var(--font-mono);">
+                Nodes: Building, Room, Faculty, Course, Equipment
+              </span>
+            </div>
+            <canvas id="graphCanvas"></canvas>
+            <div style="margin-top: 16px; display: flex; gap: 20px; font-size: 12px; color: var(--text-muted);">
+              <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #4FACFE;"></span> Buildings</span>
+              <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #00E676;"></span> Rooms</span>
+              <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #C084FC;"></span> Faculty</span>
+              <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #FF007F;"></span> Courses</span>
+              <span style="display: flex; align-items: center; gap: 6px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #FFB300;"></span> Equipment</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. FORECAST VIEW -->
+        <section id="view-forecast" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 24px;">
+            <div class="card-title">
+              <span>XGBoost 24-Hour Demand & Capacity Prediction</span>
+              <div style="display: flex; gap: 12px; align-items: center;">
+                <label style="font-size: 12px; color: var(--text-dim);">Select Room:</label>
+                <select id="forecast-room-select" onchange="updateForecastView()" style="background: rgba(255,255,255,0.05); color: #fff; border: 1px solid var(--border-glass); padding: 4px 10px; border-radius: var(--radius-sm);">
+                  <option value="ROOM_R101">Room R101 (Cap 60)</option>
+                  <option value="ROOM_R102" selected>Room R102 (Cap 100)</option>
+                  <option value="ROOM_R104">Room R104 (Cap 120)</option>
+                  <option value="ROOM_C101">Lab Alpha (Cap 60)</option>
+                </select>
+              </div>
+            </div>
+            <div id="forecast-chart-container" style="height: 320px; display: flex; align-items: flex-end; gap: 8px; padding-top: 20px;">
+              <!-- 24-hour bars rendered dynamically -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. SIMULATION VIEW -->
+        <section id="view-simulation" class="view-panel">
+          <div class="glass-card">
+            <div class="card-title">
+              <span>What-If Reallocation Sandbox</span>
+              <span style="font-size: 12px; color: var(--text-dim);">Test changes safely before committing actions</span>
+            </div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Target Course</label>
+                <select id="sim-course-select">
+                  <option value="CRS_DS301" selected>DS301 - Data Science & AI (85 students)</option>
+                  <option value="CRS_CS101">CS101 - Algorithms (95 students)</option>
+                  <option value="CRS_OPT501">OPT501 - Operations Research (72 students)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Candidate Room</label>
+                <select id="sim-target-room">
+                  <option value="ROOM_R102" selected>Room R102 (Cap 100, Projector+Comp)</option>
+                  <option value="ROOM_R103">Room R103 (Cap 80, Projector only)</option>
+                  <option value="ROOM_R104">Room R104 (Cap 120, Full AV)</option>
+                  <option value="ROOM_R202">Room R202 (Maintenance)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Simulate Enrollment Override</label>
+                <input type="number" id="sim-enrollment-override" placeholder="85" value="85">
+              </div>
+            </div>
+            <button class="btn-primary" id="btn-run-simulation" onclick="executeSimulation()">
+              ▶ Run What-If Simulation
+            </button>
+
+            <div id="sim-output-box" style="margin-top: 24px; display: none;">
+              <h4 style="font-family: var(--font-heading); margin-bottom: 12px; color: #FFFFFF;">Simulation Results</h4>
+              <div class="sim-results-grid">
+                <div class="sim-metric-box">
+                  <span>Capacity Feasibility</span>
+                  <strong id="sim-cap-check" class="status-pass">PASS</strong>
+                </div>
+                <div class="sim-metric-box">
+                  <span>Equipment Feasibility</span>
+                  <strong id="sim-equip-check" class="status-pass">PASS</strong>
+                </div>
+                <div class="sim-metric-box">
+                  <span>Schedule Conflict</span>
+                  <strong id="sim-conflict-check" class="status-pass">NONE</strong>
+                </div>
+                <div class="sim-metric-box">
+                  <span>Utilization Delta</span>
+                  <strong id="sim-delta-util" class="status-pass">+18%</strong>
+                </div>
+              </div>
+              <div id="sim-summary-text" style="padding: 14px; background: rgba(0, 242, 254, 0.08); border-radius: var(--radius-md); font-size: 13px; color: var(--text-main);"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. OPTIMIZATION VIEW -->
+        <section id="view-optimization" class="view-panel">
+          <div class="glass-card">
+            <div class="card-title">
+              <span>Google OR-Tools CP-SAT Solver Sandbox</span>
+              <button class="btn-primary" onclick="triggerFullOptimization()">Run CP-SAT Optimizer</button>
+            </div>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+              Evaluates hard capacity, capability, availability constraints and minimizes idle capacity waste + cost.
+            </p>
+            <div id="optimization-results-container">
+              <!-- Rendered candidates with rejection reasons -->
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. APPROVALS & AUDIT VIEW -->
+        <section id="view-approvals" class="view-panel">
+          <div class="glass-card" style="margin-bottom: 24px;">
+            <div class="card-title">
+              <span>Pending Human Approval Queue (Risk Gate)</span>
+            </div>
+            <div id="pending-approvals-list">
+              <!-- Pending items -->
+            </div>
+          </div>
+
+          <div class="glass-card">
+            <div class="card-title">
+              <span>Immutable Audit Trail (Section 27)</span>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Log ID</th>
+                  <th>Action Type</th>
+                  <th>Target Resource</th>
+                  <th>Executor</th>
+                  <th>Details</th>
+                  <th>Timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="audit-logs-table">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 8. FEEDBACK VIEW -->
+        <section id="view-feedback" class="view-panel">
+          <div class="glass-card">
+            <div class="card-title">
+              <span>Closed Feedback Loop (Section 28 & 36)</span>
+              <span style="font-size: 12px; color: var(--accent-cyan); font-family: var(--font-mono);" id="fb-accuracy-pill">Accuracy: 97.2%</span>
+            </div>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
+              Continuous learning: records actual observed utilization post-execution vs XGBoost predicted utilization.
+            </p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Feedback ID</th>
+                  <th>Action Executed</th>
+                  <th>Predicted Utilization</th>
+                  <th>Actual Outcome</th>
+                  <th>Error Margin</th>
+                  <th>Accuracy Score</th>
+                </tr>
+              </thead>
+              <tbody id="feedback-records-table">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 9. MODEL TRAINING VIEW -->
+        <section id="view-training" class="view-panel">
+          <div class="glass-card">
+            <div class="card-title">
+              <span>BharatVerse Machine Learning Training Center</span>
+              <button class="btn-primary" id="btn-retrain-model" onclick="triggerModelRetrain()">
+                ⚡ Retrain Models Now
+              </button>
+            </div>
+            <div class="metrics-row">
+              <div class="metric-card-sm">
+                <span>Model Architecture</span>
+                <strong style="font-size: 17px;">XGBoost + IsoForest</strong>
+              </div>
+              <div class="metric-card-sm">
+                <span>Test R² Score</span>
+                <strong id="ml-r2-score">0.8745</strong>
+              </div>
+              <div class="metric-card-sm">
+                <span>Mean Absolute Error</span>
+                <strong id="ml-mae-score">6.57 occ</strong>
+              </div>
+              <div class="metric-card-sm">
+                <span>RMSE</span>
+                <strong id="ml-rmse-score">16.04 occ</strong>
+              </div>
+              <div class="metric-card-sm">
+                <span>Training Records</span>
+                <strong id="ml-samples-count">25,920</strong>
+              </div>
+            </div>
+
+            <h4 style="font-family: var(--font-heading); margin-bottom: 14px; color: #FFFFFF;">Feature Importances</h4>
+            <div id="feature-importances-container" style="margin-bottom: 28px;">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Ingest & Analyze New Resource Form -->
+            <div style="background: rgba(7, 11, 20, 0.7); border: 1px solid rgba(0, 242, 254, 0.3); border-radius: var(--radius-md); padding: 22px;">
+              <h4 style="font-family: var(--font-heading); color: #FFFFFF; font-size: 16px; margin-bottom: 6px;">
+                ➕ Enter New Resource & Retrain Model
+              </h4>
+              <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 18px;">
+                Analyze any newly commissioned space, register its capabilities and safe operational thresholds, generate baseline telemetry, and retrain the XGBoost demand model.
+              </p>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Resource ID</label>
+                  <input type="text" id="new-res-id" placeholder="ROOM_BIO_401" value="ROOM_QUANTUM_LAB">
+                </div>
+                <div class="form-group">
+                  <label>Resource Name</label>
+                  <input type="text" id="new-res-name" placeholder="Quantum Photonics Lab" value="Quantum Computing & Photonics Lab">
+                </div>
+                <div class="form-group">
+                  <label>Space Type</label>
+                  <select id="new-res-type">
+                    <option value="laboratory" selected>Laboratory</option>
+                    <option value="room">Lecture Room</option>
+                    <option value="seminar">Seminar Hall</option>
+                    <option value="auditorium">Auditorium</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Seating Capacity</label>
+                  <input type="number" id="new-res-capacity" placeholder="50" value="48">
+                </div>
+                <div class="form-group">
+                  <label>Capabilities (comma separated)</label>
+                  <input type="text" id="new-res-caps" placeholder="gpu_cluster, computer, sensors" value="gpu_cluster, computer, sensors, smartboard">
+                </div>
+                <div class="form-group">
+                  <label>Cost Per Hour (₹)</label>
+                  <input type="number" id="new-res-cost" placeholder="100" value="135">
+                </div>
+              </div>
+
+              <button class="btn-primary" id="btn-ingest-new-resource" onclick="submitNewResourceForTraining()">
+                ⚡ Ingest, Analyze & Retrain
+              </button>
+
+              <div id="new-res-analysis-output" style="margin-top: 18px; display: none; background: rgba(0, 242, 254, 0.08); border-left: 3px solid var(--accent-cyan); padding: 14px; border-radius: 4px;">
+                <!-- Dynamic analysis output -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,43 +1,55 @@
 {
   "model_name": "BharatVerse Campus Resource Intelligence ML",
-  "trained_at": "2026-09-20T18:38:06.706032",
+  "dataset_source": "BharatVerse_Data_Fusion_Dataset",
+  "dataset_file": "/Users/venkatramana/Desktop/projects/bharat-verse/test1/BharatVerse_Data_Fusion_Dataset/processed/fused_ml_room_occupancy.csv",
+  "trained_at": "2026-09-20T18:56:02.708712",
   "frameworks": {
     "xgboost": "3.2.0",
     "scikit_learn": "1.9.1"
   },
-  "target": "actual_occupancy",
+  "target": "occupancy_count",
   "metrics": {
-    "mae": 6.233,
-    "rmse": 15.663,
-    "r2_score": 0.8625,
-    "accuracy_pct": 86.25
+    "mae": 3.516,
+    "rmse": 4.896,
+    "r2_score": 0.9583,
+    "accuracy_pct": 95.83
   },
   "feature_cols": [
     "day_of_week",
     "hour",
     "is_weekend",
-    "exam_period",
-    "room_capacity",
-    "equipment_count",
+    "capacity",
     "cost_per_hour",
-    "hist_avg_occupancy"
+    "power_kw",
+    "temperature_c",
+    "lag_1h",
+    "lag_24h",
+    "rolling_3h",
+    "expected_occupancy"
   ],
   "feature_importances": {
-    "is_weekend": 0.3805929720401764,
-    "hist_avg_occupancy": 0.3597271740436554,
-    "day_of_week": 0.11528579890727997,
-    "room_capacity": 0.07563941180706024,
-    "hour": 0.04170481488108635,
-    "equipment_count": 0.01743745617568493,
-    "exam_period": 0.008001971989870071,
-    "cost_per_hour": 0.0016103428788483143
+    "expected_occupancy": 0.8316931128501892,
+    "rolling_3h": 0.05352037027478218,
+    "power_kw": 0.051728520542383194,
+    "capacity": 0.04829246923327446,
+    "temperature_c": 0.0035664173774421215,
+    "hour": 0.003099871566519141,
+    "lag_1h": 0.002569128293544054,
+    "cost_per_hour": 0.0016692248173058033,
+    "day_of_week": 0.0013426821678876877,
+    "lag_24h": 0.001277264440432191,
+    "is_weekend": 0.0012409911723807454
   },
   "anomaly_features": [
-    "occupancy_ratio",
+    "occupancy_count",
+    "power_kw",
+    "temperature_c",
     "hour",
     "is_weekend",
-    "cost_per_hour"
+    "capacity",
+    "utilization"
   ],
-  "anomaly_contamination": 0.03,
-  "training_samples": 28560
+  "anomaly_contamination": 0.01,
+  "anomalies_flagged": 150,
+  "training_samples": 15000
 }

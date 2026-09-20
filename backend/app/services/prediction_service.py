@@ -1,6 +1,7 @@
 """
 BharatVerse - Prediction Service
 Serves live predictions using the trained XGBoost Demand Model.
+Dynamically adapts to dataset schema (BharatVerse_Data_Fusion_Dataset or fallback).
 """
 
 import os
@@ -36,44 +37,74 @@ class PredictionService:
         is_weekend: int = 0,
         exam_period: int = 0,
         equipment_count: int = 2,
-        cost_per_hour: float = 60.0
+        cost_per_hour: float = 60.0,
+        power_kw: float = None,
+        temperature_c: float = None,
+        lag_1h: float = None,
+        lag_24h: float = None,
+        rolling_3h: float = None
     ):
-        if self.model is None:
+        if self.model is None or not self.metadata:
             self.load_model()
 
-        # Historical baseline approximation for the feature
+        # Compute baseline expected occupancy
         if is_weekend:
-            hist_avg = room_capacity * 0.08
+            expected_occ = room_capacity * 0.08
         elif 9 <= hour <= 17:
-            hist_avg = room_capacity * 0.75
+            expected_occ = room_capacity * 0.70
         elif 18 <= hour <= 21:
-            hist_avg = room_capacity * 0.25
+            expected_occ = room_capacity * 0.25
         else:
-            hist_avg = 0.0
+            expected_occ = 0.0
 
-        features = np.array([[
-            day_of_week,
-            hour,
-            is_weekend,
-            exam_period,
-            room_capacity,
-            equipment_count,
-            cost_per_hour,
-            hist_avg
-        ]])
+        feature_cols = self.metadata.get("feature_cols", [])
+
+        # Fused Telemetry Dataset Schema
+        if "power_kw" in feature_cols:
+            pwr = power_kw if power_kw is not None else (0.8 + 2.5 * (expected_occ / max(1, room_capacity)))
+            temp = temperature_c if temperature_c is not None else (23.5 + 1.8 * (expected_occ / max(1, room_capacity)))
+            l1 = lag_1h if lag_1h is not None else expected_occ
+            l24 = lag_24h if lag_24h is not None else expected_occ
+            r3 = rolling_3h if rolling_3h is not None else expected_occ
+
+            feature_map = {
+                "day_of_week": day_of_week,
+                "hour": hour,
+                "is_weekend": is_weekend,
+                "capacity": room_capacity,
+                "cost_per_hour": cost_per_hour,
+                "power_kw": pwr,
+                "temperature_c": temp,
+                "lag_1h": l1,
+                "lag_24h": l24,
+                "rolling_3h": r3,
+                "expected_occupancy": expected_occ
+            }
+            features = np.array([[feature_map[col] for col in feature_cols]])
+        else:
+            # Fallback schema
+            features = np.array([[
+                day_of_week,
+                hour,
+                is_weekend,
+                exam_period,
+                room_capacity,
+                equipment_count,
+                cost_per_hour,
+                expected_occ
+            ]])
 
         if self.model is not None:
             pred = float(self.model.predict(features)[0])
-            pred = max(0, min(room_capacity * 1.3, pred))
+            pred = max(0, min(room_capacity * 1.35, pred))
         else:
-            pred = hist_avg
+            pred = expected_occ
 
         predicted_occupancy = int(round(pred))
         utilization = round((predicted_occupancy / max(1, room_capacity)) * 100.0, 1)
         shortage_risk = predicted_occupancy >= int(room_capacity * 0.95)
 
-        # Confidence based on historical training accuracy
-        confidence = float(self.metadata.get("metrics", {}).get("accuracy_pct", 87.4)) / 100.0
+        confidence = float(self.metadata.get("metrics", {}).get("accuracy_pct", 95.7)) / 100.0
 
         return {
             "predicted_occupancy": predicted_occupancy,

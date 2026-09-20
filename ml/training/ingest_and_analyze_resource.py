@@ -2,7 +2,7 @@
 BharatVerse - New Resource Analyzer & Training Pipeline
 1. Validates and profiles newly entered campus resources (rooms, labs, halls).
 2. Computes capability match, capacity category, and anomaly thresholds.
-3. Ingests or generates baseline telemetry for the new resource.
+3. Ingests or generates baseline telemetry for the new resource into BharatVerse_Data_Fusion_Dataset.
 4. Updates the dataset and triggers model retraining.
 5. Produces an instant 24-hour demand forecast for the new resource.
 """
@@ -24,16 +24,23 @@ from backend.app.database.connection import SessionLocal
 from backend.app.database.db_models import ResourceModel
 from backend.app.services.prediction_service import prediction_service
 
-DATA_PATH = os.path.join(PROJECT_ROOT, "data", "synthetic", "historical_occupancy.csv")
-RESOURCES_JSON_PATH = os.path.join(PROJECT_ROOT, "data", "synthetic", "campus_resources.json")
+FUSION_DATA_PATH = os.path.join(PROJECT_ROOT, "BharatVerse_Data_Fusion_Dataset", "processed", "fused_ml_room_occupancy.csv")
+SYNTHETIC_DATA_PATH = os.path.join(PROJECT_ROOT, "data", "synthetic", "historical_occupancy.csv")
+
+def get_target_data_path():
+    if os.path.exists(FUSION_DATA_PATH):
+        return FUSION_DATA_PATH
+    return SYNTHETIC_DATA_PATH
 
 def analyze_and_ingest_resource(resource_dict: dict, days_of_history: int = 30, retrain_now: bool = True):
     """
     Analyzes a newly entered resource, ingests it into dataset & DB, and retrains the models.
     """
+    target_data_path = get_target_data_path()
     print("==================================================================")
     print("  BHARATVERSE RESOURCE INGESTION & ANALYSIS PIPELINE")
     print("==================================================================")
+    print(f"Target Dataset: {target_data_path}")
 
     # 1. Validation
     res_id = resource_dict.get("resource_id")
@@ -53,7 +60,6 @@ def analyze_and_ingest_resource(resource_dict: dict, days_of_history: int = 30, 
     # 2. Resource Intelligence Profiling
     print(f"\n[Step 1/4] Analyzing Profile for: {name} ({res_id})")
     
-    # Capacity categorization
     if capacity < 50:
         cap_category = "Small Discussion Room / Specialized Lab"
     elif capacity < 100:
@@ -63,12 +69,10 @@ def analyze_and_ingest_resource(resource_dict: dict, days_of_history: int = 30, 
     else:
         cap_category = "Campus Auditorium / Mega Space"
 
-    # Capability matching against common university demands
     common_demands = ["projector", "computer", "audio", "gpu_cluster", "smartboard", "sensors"]
     matched_demands = [c for c in capabilities if c in common_demands]
     versatility_score = round((len(matched_demands) / len(common_demands)) * 100, 1)
 
-    # Operational Anomaly Thresholds
     safe_max_occupancy = int(capacity * 1.0)
     overcrowding_threshold = int(capacity * 1.15)
     off_hours_alert_threshold = max(5, int(capacity * 0.15))
@@ -129,10 +133,7 @@ def analyze_and_ingest_resource(resource_dict: dict, days_of_history: int = 30, 
 
     # 4. Generate & Ingest Telemetry History into CSV
     print(f"\n[Step 3/4] Generating {days_of_history} days of baseline telemetry for training...")
-    if not os.path.exists(DATA_PATH):
-        df_existing = pd.DataFrame()
-    else:
-        df_existing = pd.read_csv(DATA_PATH)
+    df_existing = pd.read_csv(target_data_path) if os.path.exists(target_data_path) else pd.DataFrame()
 
     # Remove previous records for this room if updating
     if not df_existing.empty and "room_id" in df_existing.columns:
@@ -140,6 +141,7 @@ def analyze_and_ingest_resource(resource_dict: dict, days_of_history: int = 30, 
 
     base_date = datetime.now() - timedelta(days=days_of_history)
     new_records = []
+    is_fusion = "power_kw" in df_existing.columns
 
     for day in range(days_of_history):
         current_date = base_date + timedelta(days=day)
@@ -159,25 +161,52 @@ def analyze_and_ingest_resource(resource_dict: dict, days_of_history: int = 30, 
             utilization = round((expected_occ / capacity) * 100.0, 2)
             timestamp_str = (current_date + timedelta(hours=hour)).strftime("%Y-%m-%d %H:%M:%S")
 
-            new_records.append({
-                "timestamp": timestamp_str,
-                "room_id": res_id,
-                "day_of_week": day_of_week,
-                "hour": hour,
-                "is_weekend": is_weekend,
-                "exam_period": 0,
-                "room_capacity": capacity,
-                "equipment_count": len(capabilities),
-                "cost_per_hour": cost_per_hour,
-                "actual_occupancy": expected_occ,
-                "utilization_ratio": utilization,
-                "is_anomaly": 0
-            })
+            if is_fusion:
+                pwr = round(0.6 + 2.8 * (expected_occ / max(1, capacity)) + random.uniform(-0.1, 0.1), 2)
+                temp = round(23.0 + 2.0 * (expected_occ / max(1, capacity)) + random.uniform(-0.3, 0.3), 2)
+                new_records.append({
+                    "sensor_id": f"SENS_{res_id}",
+                    "timestamp": timestamp_str,
+                    "room_id": res_id,
+                    "occupancy_count": expected_occ,
+                    "power_kw": pwr,
+                    "temperature_c": temp,
+                    "source_system": "IoT+ERP",
+                    "day_of_week": day_of_week,
+                    "hour": hour,
+                    "is_weekend": is_weekend,
+                    "lag_1h": expected_occ,
+                    "lag_24h": expected_occ,
+                    "rolling_3h": expected_occ,
+                    "capacity": capacity,
+                    "cost_per_hour": cost_per_hour,
+                    "utilization": round(expected_occ / max(1, capacity), 3),
+                    "expected_occupancy": float(expected_occ),
+                    "anomaly_label": 0,
+                    "data_source": "IoT+ERP",
+                    "fusion_key": f"ROOM:{res_id}|{current_date.strftime('%Y%m%d')}{hour:02d}",
+                    "record_quality": 1.0
+                })
+            else:
+                new_records.append({
+                    "timestamp": timestamp_str,
+                    "room_id": res_id,
+                    "day_of_week": day_of_week,
+                    "hour": hour,
+                    "is_weekend": is_weekend,
+                    "exam_period": 0,
+                    "room_capacity": capacity,
+                    "equipment_count": len(capabilities),
+                    "cost_per_hour": cost_per_hour,
+                    "actual_occupancy": expected_occ,
+                    "utilization_ratio": utilization,
+                    "is_anomaly": 0
+                })
 
     df_new = pd.DataFrame(new_records)
     df_combined = pd.concat([df_existing, df_new], ignore_index=True)
-    df_combined.to_csv(DATA_PATH, index=False)
-    print(f"  Added {len(new_records)} sensor readings to {DATA_PATH} (Total: {len(df_combined)} records).")
+    df_combined.to_csv(target_data_path, index=False)
+    print(f"  Added {len(new_records)} sensor readings to {target_data_path} (Total: {len(df_combined):,} records).")
 
     # 5. Retrain Models
     training_metrics = {}
@@ -188,6 +217,7 @@ def analyze_and_ingest_resource(resource_dict: dict, days_of_history: int = 30, 
         print("\n[Step 4/4] Model retraining skipped (retrain_now=False).")
 
     # 6. Generate 24-Hour Forecast for the new resource
+    prediction_service.load_model()
     forecast_preview = prediction_service.get_24h_forecast(room_capacity=capacity, day_of_week=0)
 
     result = {
@@ -196,24 +226,23 @@ def analyze_and_ingest_resource(resource_dict: dict, days_of_history: int = 30, 
         "total_dataset_samples": len(df_combined),
         "retrained": retrain_now,
         "model_metrics": training_metrics.get("metrics", {}),
-        "forecast_sample_24h": forecast_preview[:6] # First 6 hours sample
+        "forecast_sample_24h": forecast_preview[:6]
     }
 
     print("\n✅ New Resource Analysis and Model Retraining Completed Successfully!")
     return result
 
 if __name__ == "__main__":
-    # Example CLI demonstration: Adding a new Specialized AI Research Lab
     sample_new_resource = {
-        "resource_id": "ROOM_AI_COLLAB_301",
-        "name": "Generative AI Research & Innovation Pod",
+        "resource_id": "ROOM_QUANTUM_COMP",
+        "name": "Quantum Computing & Supercomputing Cluster",
         "type": "laboratory",
-        "capacity": 55,
-        "building_id": "BLD_C",
-        "location": "Computing Complex - 3rd Floor",
+        "capacity": 65,
+        "building_id": "B03",
+        "location": "Science & Labs - Level 4",
         "capabilities": ["gpu_cluster", "computer", "smartboard", "high_speed_net"],
-        "cost_per_hour": 140.0
+        "cost_per_hour": 160.0
     }
-    res = analyze_and_ingest_resource(sample_new_resource, days_of_history=30, retrain_now=True)
+    res = analyze_and_ingest_resource(sample_new_resource, days_of_history=25, retrain_now=True)
     print("\nResult Summary:")
     print(json.dumps(res, indent=2))
